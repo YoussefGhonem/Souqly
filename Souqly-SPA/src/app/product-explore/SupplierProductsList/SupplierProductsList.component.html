@@ -1,0 +1,38 @@
+<!-- <div *ngIf="products != null" class="row w-100 p-5">
+  <div *ngFor="let prod of products" class="col-3">
+    <app-SupplierProduct [product]="prod"></app-SupplierProduct>
+
+  </div>
+</div>
+
+<div class="h-75 d-flex justify-content-center align-items-center" style="font-size: 22px; font-weight: bold;" *ngIf="products == null">
+    لا يوجد لديك منتجات حتى الان
+</div> -->
+
+
+<br>
+<h2 style="text-align: center;" class="text-dark">المنتجات التى قاربت على الانتهاء</h2>
+<div class="row w-100 p-5">
+  <div *ngFor="let prod of productsEx">
+    <div *ngIf="prod.options.length >0" class="col-3">
+      <app-SupplierProduct  [product]="prod"></app-SupplierProduct>
+    </div>
+ 
+  </div>
+</div>
+
+<hr>
+<br>
+
+<h2 style="text-align: center;" class="text-dark">منتجاتى</h2>
+
+<div class="row w-100 p-5" *ngIf="products != null">
+  <div *ngFor="let prod of products" class="col-3">
+    <app-SupplierProduct [product]="prod"></app-SupplierProduct>
+  </div>
+</div>
+
+<div class="h-75 d-flex justify-content-center align-items-center" style="font-size: 22px; font-weight: bold;" *ngIf="products == null">
+  لا يوجد لديك منتجات حتى الان
+</div>
+

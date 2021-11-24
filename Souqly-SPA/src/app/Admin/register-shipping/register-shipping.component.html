@@ -1,0 +1,118 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb-text">
+            <a routerLink=""><i class="fa fa-home"></i> الصفحه الرسميه</a>
+            <span>إنشاء حساب </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumb Form Section Begin -->
+  
+  <!-- Register Section Begin -->
+  <div class="register-login-section spad">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="register-form">
+            <h2 style=" font-family: 'Almarai', sans-serif !important;"> إنشاء حساب جديد </h2>
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+              <div class="middle">
+                <label>
+                  <input type="radio" formControlName="roleName" value="Shipping" />
+                  <div class="front-end box">
+                    <span style=" font-family: 'Almarai', sans-serif !important;">شحن  </span>
+                  </div>
+                </label>
+              </div>
+  
+              <hr>
+              <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+                {{errorMsg}}
+              </div>
+  
+              <div class="group-input">
+                <label>أسم المستخدم *</label>
+                <input formControlName="userName" name="userName" type="text">
+  
+  
+                <div style="color: crimson;"
+                *ngIf="this.registerForm.get('userName').touched
+                && this.registerForm.get('userName').hasError('required')">
+                  هذا مطلوب</div>
+              </div>
+              <!-- neeeeeew shahy -->
+              <div class="group-input">
+                <label>الاسم الأول *</label>
+                <input formControlName="FirstName" name="FirstName" type="text">
+  
+  
+                <div style="color: crimson;"
+                *ngIf="this.registerForm.get('FirstName').touched
+                && this.registerForm.get('FirstName').hasError('required')">
+                  هذا مطلوب</div>
+              </div>
+  
+              <div class="group-input">
+                <label>الاسم الأخير *</label>
+                <input formControlName="lastName" name="lastName" type="text">
+  
+  
+                <div style="color: crimson;"
+                *ngIf="this.registerForm.get('lastName').touched
+                && this.registerForm.get('lastName').hasError('required')">
+                  هذا مطلوب</div>
+              </div>
+              <!-- neeeeeew shahy -->
+  
+  
+              <div class="group-input">
+                <label for="username">البريد الاكتروني *</label>
+                <input formControlName="email" name="email" type="text">
+                <div style="color: crimson;"
+                  *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')">
+                  هذا مطلوب</div>
+                <div style="color: crimson;" *ngIf="this.registerForm.get('email').hasError('email')">
+                  الرجاء إدخال البريد الاكتروني صحيح</div>
+              </div>
+  <!-- //new shaaahy -->
+              <div class="group-input">
+                <label for="phoneNumber"> رقم الموبايل</label>
+                <input  formControlName="phoneNumber" name="phoneNumber" type="text">
+                <div style="color: crimson;"
+                *ngIf="registerForm.get('phoneNumber').hasError('pattern')">
+                من فضلك ادخل أرقام موبايل صحيحة
+              </div>
+              <div style="color: crimson;"
+                *ngIf="registerForm.get('phoneNumber').hasError('maxLength')">
+              </div>
+              <div style="color: crimson;"
+                *ngIf="registerForm.get('phoneNumber').hasError('minLength')">
+              </div>
+            </div>
+  <!-- //new shaaahy -->
+  
+              <div class="group-input">
+                <label for="pass">الرقم السري *</label>
+  
+              <input formControlName="password" name="password" type="password">
+                <div style="color: crimson;"
+                  *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').hasError('required')">
+                هذا مطلوب</div>
+              </div>
+  
+              <button type="submit" class="site-btn register-btn">تسجيل</button>
+            </form>
+            <div class="switch-login">
+              <a [routerLink]="['/login']" class="or-login">لديك حساب بالفعل ؟</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Register Form Section End -->

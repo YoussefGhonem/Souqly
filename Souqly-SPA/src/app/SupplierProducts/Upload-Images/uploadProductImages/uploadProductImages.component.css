@@ -1,0 +1,14 @@
+
+#formvalidation{
+color: red;
+font-weight: 100;
+}
+
+input.ng-invalid{
+border:3px solid red;
+}
+
+
+#optioninline{
+  display: inline;
+}

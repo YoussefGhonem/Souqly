@@ -1,0 +1,42 @@
+<div class="container" style="font-family:'Segoe UI';">
+<div class="py-2 mx-2 my-2" >
+    <table class="table table-striped my-3 mx-3 py-2 " style="direction: rtl; text-align: right;">
+    <thead>
+      <div class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;" > بيــــــانات المستخدم</div> 
+      <tr>
+        <!-- <th scope="col">id</th> -->
+        <th scope="col">اسم المستخدم</th>
+        <th scope="col">الاسم الاول</th>
+        <th scope="col">الاسم الاخير</th>
+        <th scope="col">البريد الإلكترونى</th>
+        <th scope="col">العنــــوان</th>
+        <th scope="col">رقم الموبايل</th>
+        <!-- <th scope="col">roleName</th> -->
+
+      
+        
+      </tr>
+    </thead>
+    <tbody>
+  
+      <tr >
+       <!-- <td>{{this.nstd.id}}</td>  -->
+       <td>{{this.nstd.userName}}</td>
+       <td>{{this.nstd.firstName}}</td>
+       <td>{{this.nstd.lastName}}</td>
+       <td>{{this.nstd.email}}</td>
+       <td>{{this.nstd.address}}</td>
+       <td>{{this.nstd.phoneNumber}}</td>
+       <!-- <td>{{this.nstd.roleName}}</td> -->
+         
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="text-center mb-5">
+    <button (click)="Cancel()" type="button" class="btn btn-outline-dark mr-3 px-5 " >إلغاء عملية الحذق</button>
+    <button (click)="delete()" type="button" class="btn px-5 text-white" style="background-color:#e7ab3c; ">حذف البيــــــانات</button>
+    </div>
+<br>
+</div>

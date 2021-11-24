@@ -1,0 +1,36 @@
+<div >
+  <form [formGroup]="bindingOrder">
+  <p-table [value]="bindingOrders"  [columns]="cols" [paginator]="true" [rows]="5"  >
+    <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let item of cols">{{item.header}}</th>
+            <th>شركة الشحن</th>
+            <th>بوليسة الشحن</th>
+            <th>تأكيد الشحن</th>
+            <th>عرض تفاصيل الاوردر</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bindingorder>
+  
+        <tr>
+          <td *ngFor="let item of cols">
+            {{bindingorder[item.field]}}
+          </td>
+          <td>
+            <p-dropdown  [options]="shippingCompanies" optionLabel="companyName" optionValue="id" formControlName="ShippingCompany" placeholder="تحديد شركة الشحن"></p-dropdown>
+          </td>
+          <td>
+            <input type="text" #Policytext pInputText class="p-inputtext-sm" formControlName="ShippingPolicy" placeholder="إدخال بوليسة الشحن">
+          </td>
+          <td>
+            <!-- <p-inputSwitch (onChange)="handleChange($event,bindingorder['id'])" ></p-inputSwitch> -->
+            <button pButton type="button" label="شحن الاوردر" style="background: #e7ab3c;" class="p-button-warning" (click)="ShippOrder(bindingorder['id'])"></button>
+          </td>
+  
+          <td><button pButton type="button" label="تفاصيل الاوردر" style="background: #e7ab3c;" class="p-button-warning" (click)="showOrderDetailDialog(bindingorder['id'])"></button></td>
+  
+        </tr>
+    </ng-template>
+  </p-table>
+  </form>
+  </div>

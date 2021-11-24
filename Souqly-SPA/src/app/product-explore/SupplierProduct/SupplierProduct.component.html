@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+  <img class="cardImg" [src]="product.images[0]" style="height: 200px; object-fit: cover;" alt="card">
+  <i class="pi pi-heart p-mr-4 p-text-secondary p-2" style="font-size: 1rem"></i>
+  <div class="card-body">
+
+    <h5 class="card-title"> {{product.productName}}</h5>
+    <p class="card-text"> المخزون: {{product.stockIn}} قطعة</p>
+    <p class="card-text2">{{product.price}} جنيه</p>
+
+    <div class="text-center">
+      <button (click)="showOptionsDialog()" class="btn px-4">تعديل المنتج</button>
+    <br><br>
+      <button (click)="deleteProduct(product.id)"  class="s px-4">حذف المنتج</button>
+    </div>
+  </div>
+</div>

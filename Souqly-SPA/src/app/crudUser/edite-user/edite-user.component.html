@@ -1,0 +1,67 @@
+<div class="container w-75 my-5" style="font-family:'Segoe UI';">
+    <div class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;">
+      تعديل البيــــــانات الشخصية
+    </div>
+    <div class="w-75 mx-auto" style="direction: rtl; text-align: right;">
+      <div class="row mb-4">
+             <div class="col" >
+              <label for="uname" class="form-label">اسم المستخدم</label>
+              <input [(ngModel)]="userData.userName" type="text" class="form-control" id="uname" readonly>
+             </div>
+             <div class="col">
+              <label  for="email" class="form-label">البريد الإلكترونى</label>
+              <input  [(ngModel)]="userData.email" type="email" class="form-control" id="email" readonly>
+            </div>
+      </div>
+   
+      <div class="row mb-4">
+        <div class="col" >
+         <label for="fname" class="form-label">الاسم الأول</label>
+         <input [(ngModel)]="userData.firstName" type="text" class="form-control" id="fname">
+        </div>
+        <div class="col">
+          <label for="lname" class="form-label">الاسم الأخير</label>
+          <input [(ngModel)]="userData.lastName" type="text"  class="form-control" id="lname">
+        </div>
+      </div>
+   
+      <div class="row mb-4">
+        <div class="col">
+         <label  for="phone" class="form-label">رقم الموبايل</label>
+         <input [(ngModel)]="userData.phoneNumber"  type="number" class="form-control" id="phone">
+        </div>
+        <div class="col">
+          <label  for="adress" class="form-label">العنــــوان</label>
+          <input  [(ngModel)]="userData.address" type="text" class="form-control" id="adress">
+        </div>
+      </div>
+      <!-- <div class="col">
+        <label  for="adress" class="form-label">الحاله</label>
+        <input  [(ngModel)]="userData.emailConfirmed" type="text" class="form-control" id="adress">
+      </div> -->
+      <!-- <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">الحاله</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>اختر حاله...</option>
+          <option  value={{userData.lockoutEnabled}}="true">نشط</option>
+          <option value="false">غير نشط</option>
+          
+        </select>
+      </div> -->
+    
+     
+      <select *hasRole="['Supplier']" name="status" class="btn btn-outline-dark py-2 mx-2" (change)="selectChangeHandler($event)" >
+        <option   class="py-2 mx-2"  > اختر حاله</option>
+        <option value="true"   class="py-2 mx-2"  >نشط</option>
+        <option value="false" class="py-2 mx-2" >غير نشط</option>
+      </select>
+    </div>
+  </div>
+   
+  <div class="text-center mb-5">
+  <button (click)="Cancel()" type="button" class="btn btn-outline-dark mr-3 px-5 " >إلغاء التعديلات</button>
+  <button (click)="Update()" type="button" class="btn px-5 text-white" style="background-color:#e7ab3c;">حفظ التعديلات</button>
+  </div>
+    

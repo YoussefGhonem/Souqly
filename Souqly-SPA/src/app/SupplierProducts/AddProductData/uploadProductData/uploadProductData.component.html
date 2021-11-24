@@ -1,0 +1,201 @@
+<br>
+
+<div dir="rtl" class=container *ngIf="active">
+  <form [formGroup]="productForm" (ngSubmit)="addproductdata()" *ngIf="!productadded">
+    <h3 style="text-align: right;"><b>بيانات المنتج الأساسية</b></h3>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input type="text" class="form-control" name="productName" formControlName="productName"
+            placeholder="اسم المنتج">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input type="number" class="form-control" name="Weight" formControlName="Weight" placeholder="وزن المنتج">
+        </div>
+      </div>
+      <div class="col-sm-4" dir="rtl">
+        <div class="form-group">
+          <p-dropdown [options]="categories" optionLabel="categoryName" optionValue="id" formControlName="CategoryId"
+            placeholder="اختيار الفئة"> </p-dropdown>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input type="text" class="form-control" name="Brand" formControlName="Brand" placeholder="براند">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input type="text" class="form-control" name="Dimension" formControlName="Dimension"
+            placeholder="ابعاد المنتج">
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+            <textarea type="text" class="form-control" name="Description" formControlName="Description"
+            placeholder="وصف المنتج"rows="4" cols="50">
+              </textarea>
+        </div>
+      </div>
+    </div>
+    <!-- <input class="btn btn-primary" (click)="addoption()" value="اضافة تفاصيل" style="margin-left: 100%;"> -->
+    <!-- <h2> {{productForm.value|json}}</h2> -->
+    <hr>
+    <div class="container">
+    <div class="row">
+      <h3><b>بيانات المنتج الاضافية</b></h3>
+
+      </div>
+      <br>
+    <input class="btn optionbutton" (click)="addoption()" value="اضافة تفاصيل" style="margin-left: 100%;">
+      <div class="row" >
+        <div *ngFor="let item of Codes.controls;let i=index" style="margin-right: 10px; margin-right: 5%;">
+          <br>
+          <div style="padding: 2px;" formArrayName="Codes" id="optioninline"> <input type="text" class="form-control" [formControlName]="i" placeholder="الكود">
+          </div>
+
+          <div style="padding: 2px;"  formArrayName="StockIns" id="optioninline"> <input type="number" class="form-control" [formControlName]="i" placeholder="العدد">
+          </div>
+
+          <div style="padding: 2px;"  formArrayName="ItemPrices" id="optioninline"> <input type="number" class="form-control" [formControlName]="i" placeholder="السعر">
+          </div>
+
+          <div style="padding: 2px;"  formArrayName="AvailableOptions" id="optioninline"> <input type="text" class="form-control" [formControlName]="i" placeholder="الاوبشن">
+          </div>
+
+          <input  class="btn btn-danger" (click)="removeoption()" value="حذف">
+        </div>
+
+
+      </div >
+
+
+  </div>
+    <br>
+    <hr>
+
+
+    <div class="row">
+
+      <input type="submit" value="إضافة المنتج" class="btn addbutton" [disabled]="productForm.invalid">
+    </div>
+  </form>
+
+  <hr>
+
+  <div class="row" *ngIf="productadded">
+
+    <div class="col-sm-9" style="margin-bottom: 40px">
+
+      <h3>الصورة المراد اضافتها</h3>
+      <p>عدد الصور: {{ uploader?.queue?.length }}</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+            <th>الحجم</th>
+            <th>حالة التحميل</th>
+            <th>الحالة</th>
+            <th>العمليات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+            <td *ngIf="uploader.options.isHTML5">
+              <div class="progress" style="margin-bottom: 0;">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+              </div>
+            </td>
+            <td class="text-center">
+              <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+              <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+              <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+            </td>
+            <td nowrap>
+              <button type="button" class="btn btn-success btn-xs" (click)="item.upload()"
+                [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                <span class="glyphicon glyphicon-upload"></span> تحميل
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()"
+                [disabled]="!item.isUploading">
+                <span class="glyphicon glyphicon-ban-circle"></span> الغاء
+              </button>
+              <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()"><i class="fa fa-trash"></i>
+                <span class="glyphicon glyphicon-trash"></span> حذف
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <div>
+          حالة الرفع:
+          <div class="progress" style="">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length"> <i class="fa fa-upload"></i>
+          <span class="glyphicon glyphicon-upload"></span> تحميل كل الصور
+        </button>
+        <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
+          [disabled]="!uploader.isUploading"><i class="fa fa-remove"></i>
+          <span class="glyphicon glyphicon-ban-circle"></span> إلغاء الكل الصور
+        </button>
+        <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()"
+          [disabled]="!uploader.queue.length"><i class="fa fa-trash"></i>
+          <span class="glyphicon glyphicon-trash"></span> حذف الكل الصور
+        </button>
+      </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+      <h3>تحديد الصور</h3>
+
+      <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+        [uploader]="uploader" class="well my-drop-zone">
+        منطقة لسحب و افلات الصور
+      </div>
+
+      <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+        [uploader]="uploader" [class.bg-warning]="hasBaseDropZoneOver" class="card mt-5 text-center p-3 my-drop-zone">
+        <i [class.text-danger]="hasBaseDropZoneOver" class="fa fa-upload fa-4x"></i>
+      </div>
+
+
+      <input hidden type="file" ng2FileSelect #uploadmulti [uploader]="uploader" multiple /><br />
+      <input class="btn btn-success" (click)="uploadmulti.click()" value="تحديد اكثر من صورة"><br>
+
+      <input type="file" #uploadsingle hidden ng2FileSelect [uploader]="uploader" /><br>
+      <input class="btn btn-success" (click)="uploadsingle.click()" value="نحديد صورة واحدة">
+    </div>
+
+  </div>
+
+  <br>
+  <div class="row" style="width: 500px; text-align: center;">
+    <input class="btn btn-warning" (click)="newproduct()" value="اضافة منتج جديد" *ngIf="Photouploaded" >
+  </div>
+  <br>
+
+</div>
+
+
+<div class="h-75 d-flex justify-content-center align-items-center" style="font-size: 22px; font-weight: bold;" *ngIf="!active">
+  <span class="mr-3" style="color: red; text-decoration: underline;">حسابك غير مفعل</span>
+   لا يمكنك رفع منتجاتك في الوقت الحالي
+</div>

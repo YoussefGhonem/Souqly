@@ -1,0 +1,119 @@
+<div class="h-75 pt-3">
+  <div class="container " >
+    <div  class="text-center mb-5 py-4" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;" >طريقة استلام الأرباح</div>
+<!--  modal 1 -->
+<div class="row">
+  <div class="col-12 text-center mb-5">
+    <button type="button" class="  border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal3">
+      محافظ شبكات وبنوك الكترونيه(فودافون كاش - الخ)
+     </button>
+  </div>
+  <div class="col text-left my-3">
+    <button type="button" class="w-50 border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal1">
+      تحويل بنكي
+     </button>
+  </div>
+  <div class="col text-right my-3">
+    <button type="button" class="w-50  border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal2">
+      تحويل بريدي 
+   </button>
+  </div>
+</div>
+<!-- <div style="position: absolute; z-index:1 ;top: 350px;">
+<button type="button" class=" border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal1">
+  
+   تحويل بنكي
+  </button></div> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" style="width: 100%;" id="exampleModalLabel" >تحويل بنكي</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <input type="text"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="اسم العميل" [(ngModel)]="obj.clientName">
+        </div>
+        <div class="modal-body">
+            <input type="text"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="اسم البنك" [(ngModel)]="obj.bankName">
+            </div>
+            <div class="modal-body">
+                <input type="text"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="الفرع" [(ngModel)]="obj.section">
+                </div>
+                <div class="modal-body">
+                    <input type="number"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="رقم الحساب" [(ngModel)]="obj.accountNumber">
+                    </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+          <button type="button" class="btn btn-warning" (click)="save()">حفظ التغيرات</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--  trigger modal 2 -->
+   
+ <!-- <div style="position: absolute; z-index:5 ; right: 150px; top: 350px; " >
+    <button type="button" class="  border border-warning  btn btn-muted rounded-pill " style=" align-items: flex-end; color: black; font-size: x-large;  " data-toggle="modal" data-target="#exampleModal2">
+        تحويل بريدي 
+     </button></div> -->
+     
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title text-center"  style="width: 100%;" id="exampleModalLabel">تحويل بريدي </h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+            <input type="text"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="الاسم رباعي كما يوجد في البطاقه" [(ngModel)]="obj.cardName">
+            </div>
+            <div class="modal-body">
+                <input type="number"  class="rounded text-center input-group input-group-lg  form-control" maxlength="14" minlength="14" required  placeholder="من فضلك ادخل 14 رقم الخاص بالبطاقه" [(ngModel)]="obj.cardNumber">
+                </div>
+                <div class="modal-body">
+                    <input type="number"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="من فضلك ادخل  رقم  التليفون" [(ngModel)]="obj.phoneNumber">
+                    </div>
+           <div class="modal-footer container">
+             <button type="button" class="text-center btn btn-secondary" data-dismiss="modal">اغلاق</button>
+             <button type="button" class="text-center btn btn-warning" (click)="save()">حفظ البيــــــانات</button>
+           </div>
+         </div>
+       </div>
+     </div>
+  <!--  trigger modal 3 -->
+  <!-- <div   class="text-center mb-5 py-2" >
+<button type="button" class="  border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal3">
+    محافظ شبكات وبنوك الكترونيه(فودافون كاش - الخ)
+   </button></div> -->
+   
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title text-center" style="width: 100%;" id="exampleModalLabel">محافظ او شبكات الكترونيه</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+            <input type="number" style="height: 50px; " class="rounded text-center input-group input-group-lg  form-control"   placeholder=" من فضلك ادخل  رقم المحفظه كاش " [(ngModel)]="obj.walletNumber">
+            </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+           <button type="button" class="btn btn-warning" (click)="save()">حفظ البيــــــانات</button>
+         </div>
+       </div>
+     </div>
+   </div>
+  
+   
+</div>
+</div>
