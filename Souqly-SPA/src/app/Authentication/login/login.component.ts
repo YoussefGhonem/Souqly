@@ -2,7 +2,6 @@ import { AuthServicesService } from './../../../../_services/AuthServices.servic
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HasRoleDirective } from '_directives/has-role.directive';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +35,6 @@ export class LoginComponent implements OnInit {
       () => {
         if(this.service.decodedToken.role=="Admin")
         {
-         this.router.navigate(['/dashboard'])
         }
         else if(this.service.decodedToken.role=="Supplier")
         {

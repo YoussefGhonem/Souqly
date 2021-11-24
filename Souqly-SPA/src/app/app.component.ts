@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '_models/user';
+import { NavServiceService } from '_services/NavService.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { User } from '_models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private auth: AuthServicesService, private authService:AuthServicesService) { 
+  constructor(private auth: AuthServicesService,
+    private authService:AuthServicesService) { 
     
   }
 

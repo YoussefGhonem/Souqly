@@ -1,5 +1,5 @@
 <div class="container" style="font-family:'Segoe UI';">
-<table class="table table-striped my-3 mx-3 py-2 "  style="direction: rtl; text-align: right;">
+<table *ngIf="nstd.length > 0;else temp" class="table table-striped my-3 mx-3 py-2 "  style="direction: rtl; text-align: right;">
     <thead>
         <h3 class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;"> بيــــــانات مستخدمي الموقع</h3>
       <tr>
@@ -31,6 +31,18 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<ng-template class="container" style="font-family:'Segoe UI';" #temp>
+<table class="table table-striped my-3 mx-3 py-2 "  style="direction: rtl; text-align: right;">
+    <thead>
+        <h3 class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;">
+             حتى الأن لا يوجد مستخدمين جدد
+            </h3>
+
+    </thead>
+  
+  </table>
 
   
-</div>
+</ng-template>
