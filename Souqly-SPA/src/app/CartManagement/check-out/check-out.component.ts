@@ -56,7 +56,7 @@ export class CheckOutComponent implements OnInit {
 
   findsum(data) {
     this.options = data
-    for (let j = 0; j < data.length; j++) {
+    for (let j = 0; j < data?.length; j++) {
       this.total += this.options[j].quantity * this.options[j].option.itemPrice;
       this.TotalPrices(  this.total)
     }

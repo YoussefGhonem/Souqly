@@ -127,7 +127,7 @@
                 [disabled]="item.isReady || item.isUploading || item.isSuccess">
                 <span class="glyphicon glyphicon-upload"></span> تحميل
               </button>
-              <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()"
+              <button style="margin:0px 6px 0px 4px ;" type="button" class="btn btn-warning btn-xs" (click)="item.cancel()"
                 [disabled]="!item.isUploading">
                 <span class="glyphicon glyphicon-ban-circle"></span> الغاء
               </button>
@@ -139,7 +139,7 @@
         </tbody>
       </table>
 
-      <div>
+      <div style="margin-top: 1%;">
         <div>
           حالة الرفع:
           <div class="progress" style="">
@@ -150,7 +150,7 @@
           [disabled]="!uploader.getNotUploadedItems().length"> <i class="fa fa-upload"></i>
           <span class="glyphicon glyphicon-upload"></span> تحميل كل الصور
         </button>
-        <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
+        <button style="margin:0px 6px 0px 4px ;" type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
           [disabled]="!uploader.isUploading"><i class="fa fa-remove"></i>
           <span class="glyphicon glyphicon-ban-circle"></span> إلغاء الكل الصور
         </button>

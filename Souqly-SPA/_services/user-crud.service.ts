@@ -25,7 +25,7 @@ export class UserCrudService {
     };
 
    
-      return this.http.get<User[]>(this.url+'GetAll');
+      return this.http.get<User[]>(this.url+'GetAll',httpOptions);
   }
   ////////////////////////////
   getSuppliers()

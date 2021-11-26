@@ -12,19 +12,24 @@ export class AdminMCategoriesService {
 
   constructor(private http: HttpClient) { }
 
+   headers_object = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': "Bearer "+ window.localStorage.getItem('token')
+  });
 
+ httpOptions = { headers: this.headers_object };
   apiUrl = environment.ApiUrl + "AdminMCategories/";
 
   getCategories(){
-    return this.http.get<ManageCategories[]>(this.apiUrl+"GetCategories");
+    return this.http.get<ManageCategories[]>(this.apiUrl+"GetCategories",this.httpOptions);
   }
 
   Add(cat: ManageCategories){
-    return this.http.post(this.apiUrl+"CreateCategory", cat);
+    return this.http.post(this.apiUrl+"CreateCategory", cat,this.httpOptions);
   }
 
   getById(id: number){
-    return this.http.get<ManageCategories>(this.apiUrl+"GetById/"+id);
+    return this.http.get<ManageCategories>(this.apiUrl+"GetById/"+id,this.httpOptions);
   }
 
   Update(Id: number, updatedCatName: string){

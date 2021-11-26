@@ -23,7 +23,7 @@ constructor(private http: HttpClient, private authService:AuthServicesService) {
 
     const httpOptions = { headers: headers_object };
 
-   return this.http.get<BindingOrders[]>('https://localhost:5001/api/Shipping/GetBindingOrders',httpOptions);
+   return this.http.get<BindingOrders[]>('https://localhost:44309/api/Shipping/GetBindingOrders',httpOptions);
 
   }//end of GetAllBindingOrders
 
@@ -38,7 +38,7 @@ constructor(private http: HttpClient, private authService:AuthServicesService) {
 
     const httpOptions = { headers: headers_object };
 
-    return this.http.get<ShippingCompanies[]>('https://localhost:5001/api/Shipping/GetAllShippingCompanies',httpOptions); //return companies
+    return this.http.get<ShippingCompanies[]>('https://localhost:44309/api/Shipping/GetAllShippingCompanies',httpOptions); //return companies
 
   }//end of GetAllShippingCompanies
 
@@ -55,7 +55,7 @@ ShippingOrder(orderNumber:number,one:string,two:number){
 
   console.log("===========|==>>"+orderNumber+one+two);
                                                                                                      
-  return this.http.post('https://localhost:5001/api/Shipping/MakeOrderInShipping/'+orderNumber+'/'+one+'/'+two,{orderNumber,one,two},httpOptions); //return companies
+  return this.http.post('https://localhost:44309/api/Shipping/MakeOrderInShipping/'+orderNumber+'/'+one+'/'+two,{orderNumber,one,two},httpOptions); //return companies
 
 }//end of GetAllShippingCompanies
 
@@ -70,7 +70,7 @@ ShippingOrderDetails(id:number)
 
   const httpOptions = { headers: headers_object };
 
-  return this.http.get<ShippingOrderDetails[]>('https://localhost:5001/api/Shipping/GetShippingOrderDetails/'+id,httpOptions);//???????   les hakaml
+  return this.http.get<ShippingOrderDetails[]>('https://localhost:44309/api/Shipping/GetShippingOrderDetails/'+id,httpOptions);//???????   les hakaml
 
 
 }//end of ShippingOrderDetails

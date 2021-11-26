@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -17,11 +18,15 @@ namespace Souqly_API.Controllers
     {
         private readonly ISouqlyRepo _repo;
         private readonly IMapper _mapper;
+        private readonly DataContext _context;
 
-        public CartController(ISouqlyRepo repo, IMapper mapper)
+
+        public CartController(ISouqlyRepo repo, DataContext context, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
+            _context = context;
+
 
         }
 
@@ -134,6 +139,12 @@ namespace Souqly_API.Controllers
         public async Task<IActionResult> GetProductsFromCart()
         {
             var marketId=User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (marketId != null)
+            {
+                var query = _context.UserRoles.FirstOrDefault(x => x.UserId == int.Parse(marketId) );
+                if (query.RoleId != 2)
+                    return Ok();
+            }
             var CartId = await _repo.GetCartID(Int32.Parse(marketId));
             var CartItem = await _repo.GetCart(CartId);
 

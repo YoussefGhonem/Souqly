@@ -21,8 +21,6 @@
 <div class="mt-5 mx-5">
     <p-dropdown [options]="options" [(ngModel)]="displayedTable" placeholder="تحديد الطلبات"></p-dropdown>
 </div>
-
-
 <!-- Non Confirmed Requests -->
 <div dir="rtl" class="m-5" *ngIf="displayedTable=='nonConfirmed'">
 <p-table #nc [value]="notConfirmedRequests" [rows]="10" [loading]="loading" [paginator]="true" [rowHover]="true">
@@ -32,7 +30,7 @@
             قائمة طلبات سحب الأرباح
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="nc.filterGlobal($event.target.value, 'contains')" placeholder="بحث عام" />
+                <input pInputText type="text" style="padding: 3px;" (input)="nc.filterGlobal($event.target.value, 'contains')" placeholder="بحث عام" />
             </span>
         </div>
     </ng-template>
@@ -68,7 +66,7 @@
 </div>
 
 <!-- All Requests -->
-<div dir="rtl" class="m-5" *ngIf="displayedTable=='all'">
+<div  dir="rtl" class="m-5" *ngIf="displayedTable=='all'">
     <p-table #dt [value]="requests" [rows]="10" [loading]="loading" [paginator]="true" [rowHover]="true">
 
         <ng-template pTemplate="caption">

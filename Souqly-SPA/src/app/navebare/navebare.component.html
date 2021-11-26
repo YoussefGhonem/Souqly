@@ -161,7 +161,7 @@
           <li routerLinkActive="active" *ngIf="loggedIn()"><a class="nav-link" *hasRole="['Supplier']"
               [routerLink]="['/supplierProductsList']">تعديل المنتجات</a></li>
           <!-- has role Marketing or --Supplier-- -->
-          <li routerLinkActive="active" *ngIf="loggedIn()"><a *hasRole="['Marketing' , 'Supplier']">حسابي</a>
+          <li routerLinkActive="active" style="cursor: pointer;" *ngIf="loggedIn()"><a *hasRole="['Marketing' , 'Supplier']">حسابي</a>
             <ul class="dropdown">
               <!-- <li *ngIf="loggedIn()"><a  *hasRole="['Supplier']" [routerLink]="['/myorders']" >متابعة الطلبات</a></li> -->
               <li *ngIf="loggedIn()">

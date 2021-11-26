@@ -45,7 +45,7 @@ export class SupplierOrderService{
      var aa=productForUploadDto;
      console.log(aa);
 
-    return this.http.post('https://localhost:5001/api/addproduct/'+this.SupplierId,productForUploadDto,httpOptions);
+    return this.http.post('https://localhost:44309/api/addproduct/'+this.SupplierId,productForUploadDto,httpOptions);
 
   }
 
@@ -61,7 +61,7 @@ export class SupplierOrderService{
     console.log("yes"+this.SupplierId);
     product.supplierId=this.SupplierId;
     console.log("yes"+product.supplierId);
-    return this.http.post('https://localhost:5001/api/addproduct',product,httpOptions);
+    return this.http.post('https://localhost:44309/api/addproduct',product,httpOptions);
   }
 
 
@@ -74,7 +74,7 @@ export class SupplierOrderService{
 
     const httpOptions = { headers: headers_object };
 
-    return this.http.get<Category[]>('https://localhost:5001/api/getallcategories',httpOptions);
+    return this.http.get<Category[]>('https://localhost:44309/api/getallcategories',httpOptions);
 
   }//end of getallcategories
 

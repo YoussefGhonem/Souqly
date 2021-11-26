@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,11 +16,16 @@ export class CartMangmentService {
   constructor(private http: HttpClient) { }
   apiURL = environment.ApiUrl + "Cart/";
   OrderURL= environment.ApiUrl + "Order/";
+  headers_object = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': "Bearer "+ window.localStorage.getItem('token')
+  });
 
+ httpOptions = { headers: this.headers_object };
 
 
   getOptionsFromCart(): Observable<ProductOptionCart[]> {
-    return this.http.get<ProductOptionCart[]>(this.apiURL + "GetProductsFromCart");
+    return this.http.get<ProductOptionCart[]>(this.apiURL + "GetProductsFromCart",this.httpOptions);
   }
 
   updateQuantity(id, NewQuantity) {

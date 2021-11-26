@@ -64,7 +64,7 @@ export class NavebareComponent implements OnInit {
     this.total=0;
     this.products = data
 
-    for (let j = 0; j < data.length; j++) {
+    for (let j = 0; j < data?.length; j++) {
 
       this.total += this.products[j].quantity * this.products[j].option.itemPrice;
     }

@@ -61,7 +61,7 @@ deleteProduct(id:number){
     headers: headers_object
   };
 
-  return this.http.delete("https://localhost:5001/Product/deleteProduct/"+id,httpOptions);
+  return this.http.delete("https://localhost:44309/Product/deleteProduct/"+id,httpOptions);
 
 }//end of deleteProduct
 
@@ -78,7 +78,7 @@ editOption(optionEdited:Option){
     headers: headers_object
   };
 
-  return this.http.put("https://localhost:5001/Product/editOption",optionEdited,httpOptions);
+  return this.http.put("https://localhost:44309/Product/editOption",optionEdited,httpOptions);
 
 }//end ofeditOption
 
@@ -131,7 +131,7 @@ GetSupplierProductsEx(id:number){
   const httpOptions = {
     headers: headers_object
   };
-  return this.http.get<Product[]>("https://localhost:5001/Product/GetSupplierProductsEx/"+id, httpOptions);
+  return this.http.get<Product[]>("https://localhost:44309/Product/GetSupplierProductsEx/"+id, httpOptions);
 
 }//end ofgetProducts
 

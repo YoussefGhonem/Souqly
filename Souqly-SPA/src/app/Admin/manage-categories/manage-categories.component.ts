@@ -19,9 +19,7 @@ export class ManageCategoriesComponent implements OnInit {
   allCategories: ManageCategories[];
   cols: any[];
   newCategory : ManageCategories;
-
   constructor(private adminMCategoriesServ: AdminMCategoriesService, private router : Router) { }
-
   ngOnInit(): void {
     this.adminMCategoriesServ.getCategories().subscribe(d=>{
       this.allCategories = d;
@@ -30,7 +28,7 @@ export class ManageCategoriesComponent implements OnInit {
   this.cols = [
     // { field: 'id' ,  header: 'id'},
     { field: 'categoryName', header: 'اسم الفئـــــة' },
-]
+        ]
 
   } //end oninit
   ///neeeeeeeeeew

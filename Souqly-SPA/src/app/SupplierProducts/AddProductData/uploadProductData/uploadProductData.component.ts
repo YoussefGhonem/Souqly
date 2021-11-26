@@ -95,7 +95,7 @@ export class UploadProductDataComponent implements OnInit {
 
 initializeUploader() {
   this.uploader = new FileUploader({
-    url: "https://localhost:5001/api/"+this.id,
+    url: "https://localhost:44309/api/"+this.id,
     authToken: 'Bearer ' + localStorage.getItem('token'),
     isHTML5: true,
     allowedFileType: ['image'],

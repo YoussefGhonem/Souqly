@@ -12,10 +12,20 @@ export class AdminServiceService {
   url:string = environment.ApiUrl + 'Dashboard/';
   UserId:number;
   constructor(private http: HttpClient) { }
+  apiURL = environment.ApiUrl + "Cart/";
+  OrderURL= environment.ApiUrl + "Order/";
+  headers_object = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': "Bearer "+ window.localStorage.getItem('token')
+  });
+
+ httpOptions = { headers: this.headers_object };
+  apiUrl = environment.ApiUrl + "AdminMCategories/";
+
 
   getWithdrawRequests(){
 
-    return this.http.get<UserForWithdrawRequest[]>(this.url+"GetWithdrawRequests")
+    return this.http.get<UserForWithdrawRequest[]>(this.url+"GetWithdrawRequests",this.httpOptions)
   }
 
   confirmWithdrawRequests(reqId:number){
