@@ -23,15 +23,11 @@ export class ProductComponent implements OnInit {
 
   quantity:number;
   model : AddToCart;
-
-
   constructor(private dialogService: DialogService, private messageService:MessageService , private services : CartMangmentService ,private alertifyService: AlertService ,private fb:FormBuilder) { }
-
   ngOnInit(): void {
     this.quantity = 1;
 
   }
-
 
   showOptionsDialog(){
     this.ref = this.dialogService.open(ProductOptionComponent, {

@@ -18,7 +18,11 @@ export class NavebareComponent implements OnInit {
   products: ProductOptionCart[];
   isSupplier:boolean;
   constructor(public authService: AuthServicesService, private router: Router, private resolver: ActivatedRoute,
-    private cartService: CartMangmentService,public nav:NavServiceService, private supplierService:SupplierOrderService) { }
+    private cartService: CartMangmentService,public nav:NavServiceService, private supplierService:SupplierOrderService) {
+
+      this.loadCart();
+
+     }
 
    //define connection SR
    hubConnection:HubConnection;
@@ -91,8 +95,8 @@ export class NavebareComponent implements OnInit {
 
   RefreshCart(){
 
-    this.hubConnection.invoke('refresh');
-  //  this.loadCart()
+   // this.hubConnection.invoke('refresh');
+    this.loadCart()
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MakeOrder } from '_models/MakeOrder';
@@ -8,6 +8,7 @@ import { AlertService } from '_services/alertifay.service';
 import { CartMangmentService } from '_services/cart-mangment.service';
 import * as $ from '../../../assets/js/jquery-3.3.1.min.js';
 //import * as $ from '../../../assets/js/jquery-ui.min.js';
+
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
@@ -15,7 +16,7 @@ import * as $ from '../../../assets/js/jquery-3.3.1.min.js';
 })
 export class CheckOutComponent implements OnInit {
   myForm:FormGroup;
-
+  @ViewChild('closebutton') closebutton;
   OrderData:MakeOrder;
 
   shipping: Shipping[];
@@ -31,7 +32,7 @@ export class CheckOutComponent implements OnInit {
   public someProperty = 0;
   public totalPrices=0;
   num:number;
-  constructor(private resolve: ActivatedRoute, private services: CartMangmentService, private router: Router,
+  constructor(private resolve: ActivatedRoute, private services: CartMangmentService, private router: Router, 
   private alertifyService: AlertService, private fp:FormBuilder
   ) {
   }
@@ -90,7 +91,7 @@ export class CheckOutComponent implements OnInit {
         clientName: ['', Validators.required],
         address: ['', Validators.required],
         phone: ['', Validators.required],
-        shippingId: ['', Validators.required],
+        shippingId: [1],
         siteProfits: ['', Validators.required],
         shippingProfits: ['', Validators.required],
         marketingProfits:['',[ Validators.required,Validators.min(0)]],
@@ -227,7 +228,6 @@ export class CheckOutComponent implements OnInit {
        }
 
 
-
     DeleteConfirm()
     {
       var checkboxes =document.getElementsByClassName('ckitem');
@@ -243,7 +243,13 @@ export class CheckOutComponent implements OnInit {
                this.DeleteAllProductCart(ids);
             }
         }
-        window.location.reload();
+ 
+        setTimeout(() => {
+          let currentUrl = this.router.url;
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate([currentUrl]);
+          });}, 1000);
+
       }
      }
 

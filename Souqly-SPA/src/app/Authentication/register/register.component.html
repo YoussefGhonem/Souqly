@@ -22,13 +22,21 @@
           <h2 style=" font-family: 'Almarai', sans-serif !important;"> إنشاء حساب جديد </h2>
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="middle">
-              <label>
+              <label *hasRole="['Marketing']">
                 <input type="radio" formControlName="roleName" value="Marketing" />
                 <div class="front-end box">
                   <span style=" font-family: 'Almarai', sans-serif !important;">مجال التسويق</span>
                 </div>
               </label>
-              <label>
+              <!-- <label>
+                <input type="radio" value="Supplier" formControlName="roleName" />
+                <div class="back-end box">
+                  <span style=" font-family: 'Almarai', sans-serif !important;">بائع / مستورد</span>
+                </div>
+              </label> -->
+
+     
+              <label *hasRole="['Admin']">
                 <input type="radio" value="Supplier" formControlName="roleName" />
                 <div class="back-end box">
                   <span style=" font-family: 'Almarai', sans-serif !important;">بائع / مستورد</span>

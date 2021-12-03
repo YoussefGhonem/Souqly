@@ -96,14 +96,14 @@
                           <th>الكمية</th>
                           <th>المخزون </th>
                           <!-- <th><i class="ti-close"></i></th> -->
-                          <th>
-                            <input type="checkbox" class="ckheader" (change)="seletAll()"   >
+                          <th style="text-align: center !important;">
+                            <input  type="checkbox" class="ckheader custom" (change)="seletAll()"  >
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let item of options">
-                          <td class="cart-pic first-row"><img class="cardImg" [src]="item.option.product.images[0].url"alt="" ></td>
+                          <td class="cart-pic first-row"><img class="cardImg" [src]="item.option?.product?.images[0]?.url"alt="" ></td>
                           <td style="text-align: center !important;" class="cart-title first-row">
                             <h5>{{item.option.availableOptions}} - {{item.option.product.productName}}</h5>
                           </td>
@@ -140,11 +140,11 @@
 </button>
 
 <!-- Modal -->
-<div dir="rtl" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div dir="rtl" #childModal class="modal fade" id="exampleModal" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">تنبيه حذف</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -153,8 +153,8 @@
       لقد قمت باختيار عدد  {{num}}  عناصر للحذف..هل تريد الحذف فعلا 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" (click)="DeleteConfirm()"  > تاكيد الحذف </button>
+        <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true" (click)="DeleteConfirm()"  > تاكيد الحذف </button>
       </div>
     </div>
   </div>
@@ -170,30 +170,26 @@
                         <div class="proceed-checkout" style="   width: 100% !important;    ">
                           <ul>
                             <li class="subtotal"> اختار المدينه المراد الشحن اليها
-                              <span>
+                              <!-- <span>
                                 <div class="select-dropdown">
-                                  <!-- <select #myOption (change)="UpdatePrice(myOption.value)">
-                                    <option *ngFor="let ship of shipping" value="{{ship.price}}">{{ship.city}}
-                                    </option>
-                                  </select> -->
-                                  <!-- <select name="someProperty" [(ngModel)]="someProperty">
-                                    <option  *ngFor="let ship of shipping" [ngValue]="ship.id"> {{ship.city}}
-                                    </option>
-                                  </select> -->
-
-
                                   <select formControlName="shippingId" name="someProperty"
                                     (ngModelChange)="modelChangeFn($event)">
                                     <option *ngFor="let ship of shipping" [ngValue]="ship.id"> {{ship.city}}
                                     </option>
                                   </select>
-
                                 </div>
                                 {{city}}
-                              </span>
+                              </span> -->
+                              <span> الأسكندريه </span>
                             </li>
-                            <li class="cart-total">سعر الشحن
+                            <!-- <li class="cart-total">سعر الشحن
                               <span [innerHTML]='someProperty'></span>
+
+                            </li> -->
+                            <li class="cart-total">سعر الشحن
+                         
+                             <span >     25 ج.م</span>
+
 
                             </li>
                           </ul>
@@ -218,7 +214,7 @@
 
                               </span></li>
                             <li class="cart-total">ربحك فى هذه الحالة
-                              <span>{{ Updateprice -(totalPrices + (Updateprice * 10/100) + someProperty) }} EGP</span>
+                              <span>{{ Updateprice -(totalPrices + (Updateprice * 10/100) + someProperty) }} ج.م</span>
                             </li>
                           </ul>
                         </div>

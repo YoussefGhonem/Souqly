@@ -18,7 +18,7 @@
   background-color: #e7ab3c;
 }
 .middle input[type=radio]:checked + .box span {
-  color: white;
+  color: e7ab3c;
   transform: translateY(70px);
 }
 .middle input[type=radio]:checked + .box span:before {
@@ -28,7 +28,7 @@
 .middle .box {
   width: 200px;
   height: 200px;
-  background-color: #fff;
+  background-color: #e7ab3c;
   transition: all 250ms ease;
   will-change: transition;
   display: inline-block;

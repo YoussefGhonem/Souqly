@@ -14,6 +14,16 @@
           color: white;
 
 }
+
+element.style {
+}
+ .custom{
+    /* width: 100%; */
+    height: 46px;
+    /* border: 2px solid #ebebeb; */
+    /* margin-bottom: 25px; */
+    padding-left: 15px;
+}
 .select-dropdown,
 .select-dropdown * {
 	margin: 0;

@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   }
   createRegisterForm() {
     this.registerForm = this.fp.group({
-      roleName: [null, Validators.required],
+      roleName: ['Marketing', Validators.required],
       userName: [null, Validators.required],
       FirstName: [null, Validators.required],
       lastName: [null, Validators.required],

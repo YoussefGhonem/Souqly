@@ -29,37 +29,37 @@ export class CartMangmentService {
   }
 
   updateQuantity(id, NewQuantity) {
-    return this.http.get(this.apiURL + "UpdateQuantityCart/" + id + "/" + NewQuantity);
+    return this.http.get(this.apiURL + "UpdateQuantityCart/" + id + "/" + NewQuantity,this.httpOptions);
   }
 
   GetAllShipping(): Observable<Shipping[]> {
-    return this.http.get<Shipping[]>(this.apiURL + "GetAllShipping");
+    return this.http.get<Shipping[]>(this.apiURL + "GetAllShipping",this.httpOptions);
   }
 
 
   MakeOrder(model: MakeOrder) {
-    return this.http.post(this.OrderURL + 'MakeOrder' , model);
+    return this.http.post(this.OrderURL + 'MakeOrder' , this.httpOptions);
   }
 
   GetOrderDetails(id:number): Observable<Order> {
-    return this.http.get<Order>(this.OrderURL + "OrderDetails/"+ id);
+    return this.http.get<Order>(this.OrderURL + "OrderDetails/"+ id,this.httpOptions);
   }
 
   GetAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.OrderURL + "GetAllOrders");
+    return this.http.get<Order[]>(this.OrderURL + "GetAllOrders",this.httpOptions);
   }
 
 
   DeleteAllProductCart(ids:string[])
   {
-    return this.http.post(this.apiURL + 'DeleteAllProOptionFromCart' ,ids);
+    return this.http.post(this.apiURL + 'DeleteAllProOptionFromCart' ,ids,this.httpOptions);
 
   }
 
 
   AddToCart(OptionId:number,Quantity:number)
   {
-    return this.http.get(this.apiURL + 'AddToCart/'+OptionId +'/'+Quantity)
+    return this.http.get(this.apiURL + 'AddToCart/'+OptionId +'/'+Quantity,this.httpOptions)
   }
 
 }

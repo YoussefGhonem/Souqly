@@ -18,16 +18,17 @@
             class="fa fa-sign-out" aria-hidden="true"></i> </a>
 
         <div class="lan-selector">
-          <select class="language_drop" name="countries" id="countries" style="width:300px;">
+          <!-- <select class="language_drop" name="countries" id="countries" style="width:300px;">
             <option value='yt' data-title="English">عربي
             </option>
             <option value='yu' data-image="assets/img/flag-2.jpg" data-imagecss="flag yu" data-title="Bangladesh">
               English
             </option>
-          </select>
+          </select> -->
         </div>
         <div class="top-social">
-          <a href="#"><i class="ti-facebook"></i></a>
+          <a href="https://www.facebook.com/Souqly-%D8%B3%D9%88%D9%82%D9%84%D9%8A-106472671672069"><i
+              class="ti-facebook"></i></a>
           <a href="#"><i class="ti-twitter-alt"></i></a>
           <a href="#"><i class="ti-linkedin"></i></a>
           <a href="#"><i class="ti-pinterest"></i></a>
@@ -57,15 +58,15 @@
         <div class="col-lg-3 text-right col-md-3">
           <ul class="nav-right">
             <li class="heart-icon">
-              <a href="#">
+              <!-- <a href="#">
                 <i class="icon_heart_alt"></i>
                 <span>1</span>
-              </a>
+              </a> -->
             </li>
-            <li class="cart-icon">
+            <li class="cart-icon" *hasRole="['Marketing']">
               <a href="#">
                 <i (mouseenter)="RefreshCart()" class="icon_bag_alt"></i>
-                <span>3</span>
+                <span>{{products?.length}}</span>
               </a>
 
               <div class="cart-hover">
@@ -73,7 +74,7 @@
                   <table>
                     <tbody>
                       <tr *ngFor="let item of products">
-                        <td><img class="cardImg" [src]="item.option.product.images[0].url" alt=""></td>
+                        <td><img class="cardImg" [src]="item.option?.product?.images[0]?.url" alt=""></td>
                         <td class="si-text">
                           <div class="product-selected">
                             <p>{{item.newPrice}}</p>
@@ -100,7 +101,7 @@
 
 
             </li>
-            <li class="cart-price">$150.00</li>
+            <li class="cart-price">{{total}} EGP</li>
           </ul>
         </div>
       </div>
@@ -108,23 +109,26 @@
   </div>
   <div class="nav-item">
     <div class="container">
-      <ng-container  *ngIf="loggedIn()">
+      <ng-container *ngIf="loggedIn()">
 
 
-        <div  *hasRole="['Admin']"  class="nav-depart" >
+        <div *hasRole="['Admin']" class="nav-depart">
           <div class="depart-btn">
             <span> إدارة المستخدمين</span>
             <ul class="depart-hover">
               <li routerLinkActive="active" *ngIf="loggedIn()"><a routerLink="UserList" *hasRole="['Admin']">بيانات
                   المستخدمين </a></li>
-  
+
               <li routerLinkActive="active" *ngIf="loggedIn()"><a routerLink="supplierDetails" *hasRole="['Admin']">قبول
-                الموردين</a></li>
-  
+                  الموردين</a></li>
+
               <li routerLinkActive="active" *ngIf="loggedIn()"><a routerLink="shippingregister" *hasRole="['Admin']">
                   إضافه
                   موظف شحن </a></li>
-  
+              <li routerLinkActive="active" *ngIf="loggedIn()"><a routerLink="register" *hasRole="['Admin']">
+                  إضافه
+                  بائع / مستورد </a></li>
+
             </ul>
           </div>
         </div>
@@ -146,7 +150,8 @@
 
           <li routerLinkActive="active" *ngIf="loggedIn()"><a *hasRole="['Admin']" [routerLink]="['/managecategory']">
               اضافه صنف جديد</a></li>
-
+          <li routerLinkActive="active" *ngIf="loggedIn()"><a class="nav-link" *hasRole="['Admin']"
+              [routerLink]="['/uploadproduct']">اضافة المنتجات</a></li>
 
           <!-- no oooooooooooonnnnnnneeeee -->
           <li routerLinkActive="active" *ngIf="loggedIn()"><a *hasRole="['Marketing' ,'SHIPPING']"
@@ -161,7 +166,8 @@
           <li routerLinkActive="active" *ngIf="loggedIn()"><a class="nav-link" *hasRole="['Supplier']"
               [routerLink]="['/supplierProductsList']">تعديل المنتجات</a></li>
           <!-- has role Marketing or --Supplier-- -->
-          <li routerLinkActive="active" style="cursor: pointer;" *ngIf="loggedIn()"><a *hasRole="['Marketing' , 'Supplier']">حسابي</a>
+          <li routerLinkActive="active" style="cursor: pointer;" *ngIf="loggedIn()"><a
+              *hasRole="['Marketing' , 'Supplier']">حسابي</a>
             <ul class="dropdown">
               <!-- <li *ngIf="loggedIn()"><a  *hasRole="['Supplier']" [routerLink]="['/myorders']" >متابعة الطلبات</a></li> -->
               <li *ngIf="loggedIn()">

@@ -2679,7 +2679,7 @@ ol {
 }
 
 .cart-table table tr td.first-row {
-	padding-top: 30px;
+	/* padding-top: 30px; */
 }
 
 .cart-table table tr td.cart-pic {
@@ -2914,13 +2914,13 @@ ol {
 	color: #d85d5c;
 }
 
-.checkout-form input {
+/* .checkout-form input {
 	width: 100%;
 	height: 46px;
 	border: 2px solid #ebebeb;
 	margin-bottom: 25px;
 	padding-left: 15px;
-}
+} */
 
 .checkout-form input.street-first {
 	margin-bottom: 20px;
